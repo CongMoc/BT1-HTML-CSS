@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" type="text/css" />
+    <title>Calendar Task Manager</title>
+  </head>
+  <body>
+    <div id="container">
+      <!--Sidebar in page there-->
+      <aside id="sidebar">
+        <h1>TASK MANAGER</h1>
+        <div class="information-user">
+          <img
+            src="profile1.png"
+            alt="Avatar"
+            height="50px"
+            width="50px"
+          /><br />
+          <strong style="font-size: 15px">Moc Taurus</strong><br />
+          <small>moc.taurus@gmail.com</small>
+          <div id="notify-user">
+            <a href=""
+              ><img src="setting.png" alt="Setting" width="30px" height="30px"
+            /></a>
+            <a href=""
+              ><img src="message.png" alt="Message" width="30px" height="30px"
+            /></a>
+            <a href=""
+              ><img src="notify.png" alt="Notify" width="30px" height="30px"
+            /></a>
+          </div>
+          <div id="progress">
+            <div id="percent-progress"></div>
+          </div>
+          <article class="target">
+            <span>
+              <strong id="number-completed-task">12</strong> <br />
+              Completed<br />
+              <small>task</small>
+            </span>
+            <span>
+              <strong id="number-to-do-task">22</strong> <br />
+              To do<br />
+              <small>task</small>
+            </span>
+            <span>
+              <strong id="total-completed-task">65</strong><br />
+              All<br />
+              <small>completed</small>
+            </span>
+          </article>
+        </div>
+        <section class="list-project text">
+          <h2>PROJECTS</h2>
+          <ul>
+            <li style="color: purple"><a href="">Marketing</a></li>
+            <li style="color: blue"><a href="">Design</a></li>
+            <li style="color: orange"><a href="">Development</a></li>
+            <li style="color: tomato"><a href="">Finance</a></li>
+          </ul>
+        </section>
+        <div class="text">
+          <h2>TEAM</h2>
+          <br />
+          <div class="team">
+            <img src="partner1.jpg" />
+            <img src="partner2.jpg" />
+            <img src="partner3.jpg" />
+            <img src="partner4.jpg" />
+            <img src="partner5.jpg" />
+          </div>
+        </div>
+      </aside>
+      <div class="calendar-container">
+        <!--Header in page there-->
+        <div class="header">
+          <div class="search">
+            <button type="submit" style="width: 10%; background-color: white">
+              <i class="fa fa-search"></i>
+            </button>
+            <input type="text" placeholder="Search" maxlength="50" />
+          </div>
+          <h1>Calender</h1>
+          <div class="menu">
+            <button class="btn-drop"><img src="menu.png" /></button>
+            <div class="dropdown">
+              <a href="">Profile</a>
+              <a href="">Setting</a>
+              <a href="">Logout</a>
+            </div>
+          </div>
+        </div>
+        <div class="content">
+          <!--Navbar contain navigation for calendar and task-->
+          <nav class="navbar">
+            <div class="btn-date">
+              <a href="" class="blue-white" id="week">Week</a>
+              <a href="" class="white-blue" id="month">Month</a>
+            </div>
+            <div class="next-prev">
+              <a href="" id="prev"
+                ><img
+                  src="prev.png"
+                  alt="Previous Month"
+                  width="15"
+                  height="15"
+              /></a>
+              <div class="caption-date">
+                <h1 id="month-name">Octorber</h1>
+                <label id="year-name">2018</label>
+              </div>
+              <a href="" id="next"
+                ><img src="next.png" alt="Next Month" width="15" height="15"
+              /></a>
+            </div>
+            <a href="" class="white-blue btn-task" id="add-task">Add task</a>
+            <a href="" class="blue-white btn-task" id="weekend">Weekend</a>
+          </nav>
+          <!--Calendar in month-->
+          <div class="calendar">
+            <!--Rank of week here-->
+            <div class="weekdays">
+              <div class="day">Monday</div>
+              <div class="day">Tuesday</div>
+              <div class="day">Wednesday</div>
+              <div class="day">Thursday</div>
+              <div class="day">Friday</div>
+            </div>
+            <!--Day in month here-->
+            <div class="days">
+              <div class="day">
+                <a href=""><h1 class="step-date">30</h1></a>
+                <div class="task"><!--task in day here--></div>
+                <input type="radio" name="done" />
+              </div>
+              <div class="day">
+                <a href=""><h1 class="step-date">1</h1></a>
+                <div class="task"><!--task in day here--></div>
+                <input type="radio" name="done" />
+              </div>
+              <div class="day">
+                <a href=""><h1 class="step-date">2</h1></a>
+                <div class="task"><!--task in day here--></div>
+                <input type="radio" name="done" />
+              </div>
+              <div class="day">
+                <a href=""><h1 class="step-date">3</h1></a>
+                <div class="task"><!--task in day here--></div>
+                <input type="radio" name="done" />
+              </div>
+              <div class="day">
+                <a href=""><h1 class="step-date">4</h1></a>
+                <div class="task"><!--task in day here--></div>
+                <input type="radio" name="done" />
+              </div>
+              <div class="day">
+                <a href=""><h1 class="step-date">5</h1></a>
+                <div class="task"><!--task in day here--></div>
+                <input type="radio" name="done" />
+              </div>
+              <div class="day">
+                <a href=""><h1 class="step-date">6</h1></a>
+                <div class="task"><!--task in day here--></div>
+                <input type="radio" name="done" />
+              </div>
+              <div class="day">
+                <a href=""><h1 class="step-date">7</h1></a>
+                <div class="task"><!--task in day here--></div>
+                <input type="radio" name="done" />
+              </div>
+              <div class="day">
+                <a href=""><h1 class="step-date">8</h1></a>
+                <div class="task"><!--task in day here--></div>
+                <input type="radio" name="done" />
+              </div>
+              <div class="day">
+                <a href=""><h1 class="step-date">9</h1></a>
+                <div class="task"><!--task in day here--></div>
+                <input type="radio" name="done" />
+              </div>
+              <div class="day">
+                <a href=""><h1 class="step-date">10</h1></a>
+                <div class="task"><!--task in day here--></div>
+                <input type="radio" name="done" />
+              </div>
+              <div class="day">
+                <a href=""><h1 class="step-date">11</h1></a>
+                <div class="task"><!--task in day here--></div>
+                <input type="radio" name="done" />
+              </div>
+              <div class="day">
+                <a href=""><h1 class="step-date">12</h1></a>
+                <div class="task"><!--task in day here--></div>
+                <input type="radio" name="done" />
+              </div>
+              <div class="day">
+                <a href=""><h1 class="step-date">13</h1></a>
+                <div class="task"><!--task in day here--></div>
+                <input type="radio" name="done" />
+              </div>
+              <div class="day">
+                <a href=""><h1 class="step-date">14</h1></a>
+                <div class="task"><!--task in day here--></div>
+                <input type="radio" name="done" />
+              </div>
+              <div class="day">
+                <a href=""><h1 class="step-date">15</h1></a>
+                <div class="task"><!--task in day here--></div>
+                <input type="radio" name="done" />
+              </div>
+              <div class="day">
+                <a href=""><h1 class="step-date">16</h1></a>
+                <div class="task"><!--task in day here--></div>
+                <input type="radio" name="done" />
+              </div>
+              <div class="day">
+                <a href=""><h1 class="step-date">17</h1></a>
+                <div class="task"><!--task in day here--></div>
+                <input type="radio" name="done" />
+              </div>
+              <div class="day">
+                <a href=""><h1 class="step-date">18</h1></a>
+                <div class="task"><!--task in day here--></div>
+                <input type="radio" name="done" />
+              </div>
+              <div class="day">
+                <a href=""><h1 class="step-date">19</h1></a>
+                <div class="task"><!--task in day here--></div>
+                <input type="radio" name="done" />
+              </div>
+              <div class="day">
+                <a href=""><h1 class="step-date">20</h1></a>
+                <div class="task"><!--task in day here--></div>
+                <input type="radio" name="done" />
+              </div>
+              <div class="day">
+                <a href=""><h1 class="step-date">21</h1></a>
+                <div class="task"><!--task in day here--></div>
+                <input type="radio" name="done" />
+              </div>
+              <div class="day">
+                <a href=""><h1 class="step-date">22</h1></a>
+                <div class="task"><!--task in day here--></div>
+                <input type="radio" name="done" />
+              </div>
+              <div class="day">
+                <a href=""><h1 class="step-date">23</h1></a>
+                <div class="task"><!--task in day here--></div>
+                <input type="radio" name="done" />
+              </div>
+              <div class="day">
+                <a href=""><h1 class="step-date">24</h1></a>
+                <div class="task"><!--task in day here--></div>
+                <input type="radio" name="done" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="detail-task">
+        <div class="header-add-task">
+          <a href="" class="btn category-task">Category</a>
+          <input type="date" class="date-task" />
+        </div>
+        <h2 class="title-task">Title task here</h2>
+        <span>Description here...</span><br>
+        <a href="" class="btn add-new-task">Add task</a>
+      </div>
+    </div>
+  </body>
+</html>

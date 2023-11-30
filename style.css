@@ -1,0 +1,438 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  background-color: #f6c16a;
+  width: 100%;
+  height: 95vh;
+  font-family: "Arial", "Helvetica", "sans-serif";
+}
+
+/*container for stored elements of web*/
+#container {
+  width: 96%;
+  height: 96%;
+  background-color: #f0f0fa;
+  margin: 2%;
+  border-radius: 10px;
+  display: flex;
+  border: 1px solid #b1b1b1;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+}
+
+/* set attribute for sidebar*/
+#sidebar {
+  width: 20%;
+  height: 100%;
+  border-right: 1px solid #b1b1b1;
+  display: block;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+  background-color: white;
+}
+
+#sidebar h1 {
+  font-size: 15px;
+  text-align: center;
+  color: #b1b1b1;
+  padding: 15px 0px;
+  margin: 0;
+}
+
+.information-user {
+  width: 100%;
+  height: 230px;
+  text-align: center;
+  border-bottom: 1px solid #b1b1b1;
+  border-top: 1px solid #b1b1b1;
+}
+.information-user img {
+  margin: 10px;
+  border-radius: 50%;
+}
+
+/*Specify progress task*/
+#progress {
+  width: 80%;
+  height: 5px;
+  background-color: #b1b1b1;
+  margin-left: 10%;
+  border-radius: 5px;
+}
+#percent-progress {
+  width: 60%;
+  height: 100%;
+  background-color: aqua;
+}
+
+#notify-user {
+  width: 100%;
+  height: 30px;
+  margin: 10px 0px;
+}
+#notify-user img {
+  padding: 0;
+  margin: 0 10px;
+}
+
+.information-user .target {
+  width: 80%;
+  height: 50px;
+  display: flex;
+  margin-left: 10%;
+  margin-top: 10px;
+  font-size: 13px;
+}
+
+.target span {
+  width: 33.33%;
+  height: 100%;
+}
+
+/* Specify btn for section category of Task*/
+.list-project {
+  width: 100%;
+  height: 180px;
+  font-size: 10px;
+  border-bottom: 1px solid #b1b1b1;
+}
+.text h2 {
+  margin-left: 30px;
+  font-size: 15px;
+}
+
+.list-project ul {
+  list-style-type: circle;
+  font-size: 15px;
+  margin-left: 10px;
+  width: 95%;
+}
+.list-project li a {
+  display: block;
+  padding: 8px 5px;
+  text-decoration: none;
+  color: black;
+}
+
+.list-project li a:hover {
+  background-color: #f6c16a;
+}
+
+.team {
+  width: 100%;
+  height: 120px;
+  text-align: center;
+}
+
+.team img {
+  width: 15%;
+  height: 40px;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  float: left;
+  border-radius: 50%;
+  margin-left: 10px;
+}
+
+/*Set tag contain btn event main*/
+.calendar-container {
+  width: 80%;
+  height: 100%;
+  display: block;
+}
+
+/*Set header contain caption web(search, information profile)*/
+.header {
+  width: 100%;
+  height: 8%;
+  border-bottom: 1px solid #b1b1b1;
+  text-align: center;
+  background-color: white;
+}
+
+.header h1 {
+  margin: 0;
+  padding: 0;
+  margin-top: 10px;
+  float: left;
+  margin-left: 90px;
+  font-size: 25px;
+}
+
+.header .search {
+  width: 30%;
+  height: 100%;
+  float: left;
+  margin-left: 5%;
+  display: flex;
+  border-radius: 30px;
+}
+
+.search > input,
+button {
+  border: none;
+  height: 80%;
+  margin-top: 5px;
+  font-size: 12px;
+}
+.search input {
+  border-bottom-right-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.search button {
+  border-bottom-left-radius: 20px;
+  border-top-left-radius: 20px;
+}
+
+.header .menu {
+  width: 5%;
+  height: 100%;
+  float: right;
+  position: relative;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.menu .dropdown {
+  display: none;
+  position: absolute;
+  right: 0;
+  background-color: white;
+  min-width: 100px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+  z-index: -1;
+}
+
+.dropdown a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown a:hover {
+  background-color: #f6c16a;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.menu:hover .dropdown {
+  display: block;
+  z-index: 1;
+}
+
+/*Content main*/
+.content {
+  width: 100%;
+  height: 90%;
+  display: block;
+}
+
+/*Set navbar contain navigation bar for content*/
+.navbar {
+  width: 90%;
+  height: 5%;
+  margin: 20px 50px;
+}
+
+/*Specify btn week and month of calendar task*/
+.btn-date a:link,
+a:visited {
+  padding: 7px 20px;
+  font-size: 10px;
+  text-decoration: none;
+  border-radius: 20px;
+  overflow: hidden;
+  float: left;
+}
+
+.btn-date a:hover,
+a:active {
+  background-color: #f6c16a;
+}
+
+/*Set color with background blue and color values*/
+.blue-white {
+  background-color: #4e78f9;
+  color: white;
+  border: 1px solid #4e78f9;
+}
+
+.white-blue {
+  color: #4e78f9;
+  background-color: white;
+  border: 1px solid #4e78f9;
+}
+
+/* Specify Caption and navigation months of calendar task*/
+.next-prev {
+  width: 20%;
+  height: 100%;
+  margin-left: 25%;
+  text-align: center;
+  font-size: 10px;
+  display: inline-block;
+}
+
+.next-prev h1,
+h5 {
+  margin: 0;
+  padding: 0;
+}
+
+#prev {
+  margin-left: 15%;
+  float: left;
+}
+
+#next {
+  float: left;
+}
+
+.next-prev span {
+  width: 20%;
+  height: 100%;
+  margin-left: 25%;
+  float: left;
+}
+
+.caption-date {
+  width: 50%;
+  height: 100%;
+  float: left;
+}
+
+/*Specify btn weekend and btn add task of calendar task*/
+.btn-task {
+  float: right;
+  padding: 7px 20px;
+  font-size: 10px;
+  text-decoration: none;
+  border-radius: 20px;
+  margin-left: 20px;
+}
+
+#weekend:hover {
+  background-color: #f6c16a;
+}
+
+#add-task:hover {
+  background-color: #f6c16a;
+}
+
+/* Specify display calendar task*/
+.calendar {
+  width: 90%;
+  height: 85%;
+  margin-left: 5%;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #b1b1b1;
+  background-color: white;
+}
+
+.calendar .weekdays {
+  display: flex;
+  width: 100%;
+  height: 10%;
+  border-bottom: 1px solid #b1b1b1;
+}
+.calendar .weekdays .day {
+  width: 20%;
+  text-align: center;
+  font-size: 12px;
+  padding-top: 10px;
+  border-left: 1px solid #b1b1b1;
+  font-weight: 600;
+}
+.calendar .days {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 90%;
+  background-color: green;
+}
+.calendar .days .day {
+  width: 20%;
+  height: 20%;
+  background: #fff;
+  display: block;
+  color: black;
+  border-bottom: 1px solid #b1b1b1;
+  border-left: 1px solid #b1b1b1;
+}
+
+.calendar .days .day :not(:last-child) {
+  border-bottom: none;
+}
+
+.calendar .days .day h1 {
+  font-size: 15px;
+  margin: 0;
+  padding: 0;
+  float: left;
+  margin: 10px;
+}
+
+.calendar .days .day input{
+  float: right;
+}
+
+.detail-task {
+  width: 300px;
+  height: 200px;
+  position:absolute;
+  right: 0;
+  bottom:100px;
+  border: 1px solid #b1b1b1;
+  border-radius: 10px;
+  box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.25);
+  background-color: white;
+  display:none;
+}
+
+.detail-task a {
+  padding: 7px 20px;
+  font-size: 12px;
+  text-decoration: none;
+  border-radius: 20px;
+  float: left;
+  border: 1px solid #b1b1b1;
+  margin: 10px;
+  background-color: #b1b1b1;
+}
+
+.detail-task .date-task {
+  margin: 15px;
+  float: right;
+}
+
+.detail-task .radio-task {
+  margin: 20px;
+  float: left;
+}
+
+.detail-task span{
+  margin: 20px;
+  float: left;
+}
+
+.detail-task .add-new-task {
+  float: right;
+}
+
+.header-add-task {
+  height: 40px;
+  width: 100%;
+}
+
+.day:hover{
+  transform: scale(1.2);
+}
+
+.day:hover .detail-task{
+  display: block;
+}
