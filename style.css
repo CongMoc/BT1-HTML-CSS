@@ -329,7 +329,6 @@ h5 {
   height: 85%;
   margin-left: 5%;
   border-radius: 10px;
-  overflow: hidden;
   border: 1px solid #b1b1b1;
   background-color: white;
 }
@@ -340,7 +339,7 @@ h5 {
   height: 10%;
   border-bottom: 1px solid #b1b1b1;
 }
-.calendar .weekdays .day {
+.calendar .weekdays .weekday {
   width: 20%;
   text-align: center;
   font-size: 12px;
@@ -380,8 +379,12 @@ h5 {
 .calendar .days .day input{
   float: right;
 }
+.day:hover{
+  transform: scale(1.15);
+  box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.2);
+}
 
-.detail-task {
+#detail-task {
   width: 300px;
   height: 200px;
   position:absolute;
@@ -394,7 +397,7 @@ h5 {
   display:none;
 }
 
-.detail-task a {
+#detail-task a {
   padding: 7px 20px;
   font-size: 12px;
   text-decoration: none;
@@ -405,22 +408,22 @@ h5 {
   background-color: #b1b1b1;
 }
 
-.detail-task .date-task {
+#detail-task .date-task {
   margin: 15px;
   float: right;
 }
 
-.detail-task .radio-task {
+#detail-task .radio-task {
   margin: 20px;
   float: left;
 }
 
-.detail-task span{
+#detail-task span{
   margin: 20px;
   float: left;
 }
 
-.detail-task .add-new-task {
+#detail-task .add-new-task {
   float: right;
 }
 
@@ -429,10 +432,4 @@ h5 {
   width: 100%;
 }
 
-.day:hover{
-  transform: scale(1.2);
-}
 
-.day:hover .detail-task{
-  display: block;
-}
