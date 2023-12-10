@@ -5,12 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" type="text/css" />
     <title>Calendar Task Manager</title>
+    <script src="script.js" defer></script>
   </head>
   <body>
     <div id="container">
       <!--Sidebar in page there-->
       <aside id="sidebar">
-        <h1>TASK MANAGER</h1>
+        <div class="caption-sidebar"><strong>TASK MANAGER</strong></div>
         <div class="information-user">
           <img
             src="profile1.png"
@@ -31,28 +32,30 @@
               ><img src="notify.png" alt="Notify" width="30px" height="30px"
             /></a>
           </div>
+          <small id="per-task">12/64</small>
+          <br />
           <div id="progress">
             <div id="percent-progress"></div>
           </div>
           <article class="target">
             <span>
-              <strong id="number-completed-task">12</strong> <br />
+              <strong id="number-completed-task"></strong> <br />
               Completed<br />
               <small>task</small>
             </span>
             <span>
-              <strong id="number-to-do-task">22</strong> <br />
+              <strong id="number-to-do-task"></strong> <br />
               To do<br />
               <small>task</small>
             </span>
             <span>
-              <strong id="total-completed-task">65</strong><br />
+              <strong id="total-completed-task"></strong><br />
               All<br />
               <small>completed</small>
             </span>
           </article>
         </div>
-        <section class="list-project text">
+        <section class="list-project">
           <h2>PROJECTS</h2>
           <ul>
             <li style="color: purple"><a href="">Marketing</a></li>
@@ -63,7 +66,6 @@
         </section>
         <div class="text">
           <h2>TEAM</h2>
-          <br />
           <div class="team">
             <img src="partner1.jpg" />
             <img src="partner2.jpg" />
@@ -78,7 +80,7 @@
         <div class="header">
           <div class="search">
             <button type="submit" style="width: 10%; background-color: white">
-              <i class="fa fa-search"></i>
+              <a href=""><i class="fa fa-search"></i></a>
             </button>
             <input type="text" placeholder="Search" maxlength="50" />
           </div>
@@ -96,261 +98,64 @@
           <!--Navbar contain navigation for calendar and task-->
           <nav class="navbar">
             <div class="btn-date">
-              <a href="" class="blue-white" id="week">Week</a>
-              <a href="" class="white-blue" id="month">Month</a>
+              <a class="blue-white" id="week">Week</a>
+              <a class="white-blue" id="month">Month</a>
             </div>
             <div class="next-prev">
-              <a href="" id="prev"
+              <span id="prev"
                 ><img
                   src="prev.png"
                   alt="Previous Month"
                   width="15"
                   height="15"
-              /></a>
+              /></span>
               <div class="caption-date">
-                <h1 id="month-name">Octorber</h1>
-                <label id="year-name">2018</label>
+                <h1 id="month-date"></h1>
+                <label id="year-date"></label>
               </div>
-              <a href="" id="next"
+              <span id="next"
                 ><img src="next.png" alt="Next Month" width="15" height="15"
-              /></a>
+              /></span>
             </div>
-            <a href="" class="white-blue btn-task" id="add-task">Add task</a>
-            <a href="" class="blue-white btn-task" id="weekend">Weekend</a>
+            <a class="white-blue btn-task" id="add-task">Add task</a>
+            <a class="blue-white btn-task" id="weekend">Weekend</a>
           </nav>
           <!--Calendar in month-->
           <div class="calendar">
             <!--Rank of week here-->
-            <div class="weekdays">
-              <div class="weekday">Monday</div>
-              <div class="weekday">Tuesday</div>
-              <div class="weekday">Wednesday</div>
-              <div class="weekday">Thursday</div>
-              <div class="weekday">Friday</div>
-            </div>
+            <ul class="weeks">
+              <li>Monday</li>
+              <li>Tuesday</li>
+              <li>Wednesday</li>
+              <li>Thursday</li>
+              <li>Friday</li>
+            </ul>
             <!--Day in month here-->
-            <div class="days">
-              <div
-                class="day"
-                onclick="document.getElementById('detail-task').style.display='block'"
-              >
-                <a href=""><h1 class="step-date">31</h1></a>
-                <div class="task"><!--task in day here--></div>
-                <input type="radio" name="done" />
-              </div>
-              <div
-                class="day"
-                onclick="document.getElementById('detail-task').style.display='block'"
-              >
-                <a href=""><h1 class="step-date">1</h1></a>
-                <div class="task"><!--task in day here--></div>
-                <input type="radio" name="done" />
-              </div>
-              <div
-                class="day"
-                onclick="document.getElementById('detail-task').style.display='block'"
-              >
-                <a href=""><h1 class="step-date">2</h1></a>
-                <div class="task"><!--task in day here--></div>
-                <input type="radio" name="done" />
-              </div>
-              <div
-                class="day"
-                onclick="document.getElementById('detail-task').style.display='block'"
-              >
-                <a href=""><h1 class="step-date">3</h1></a>
-                <div class="task"><!--task in day here--></div>
-                <input type="radio" name="done" />
-              </div>
-              <div
-                class="day"
-                onclick="document.getElementById('detail-task').style.display='block'"
-              >
-                <a href=""><h1 class="step-date">4</h1></a>
-                <div class="task"><!--task in day here--></div>
-                <input type="radio" name="done" />
-              </div>
-              <div
-                class="day"
-                onclick="document.getElementById('detail-task').style.display='block'"
-              >
-                <a href=""><h1 class="step-date">7</h1></a>
-                <div class="task"><!--task in day here--></div>
-                <input type="radio" name="done" />
-              </div>
-              <div
-                class="day"
-                onclick="document.getElementById('detail-task').style.display='block'"
-              >
-                <a href=""><h1 class="step-date">8</h1></a>
-                <div class="task"><!--task in day here--></div>
-                <input type="radio" name="done" />
-              </div>
-              <div
-                class="day"
-                onclick="document.getElementById('detail-task').style.display='block'"
-              >
-                <a href=""><h1 class="step-date">9</h1></a>
-                <div class="task"><!--task in day here--></div>
-                <input type="radio" name="done" />
-              </div>
-              <div
-                class="day"
-                onclick="document.getElementById('detail-task').style.display='block'"
-              >
-                <a href=""><h1 class="step-date">10</h1></a>
-                <div class="task"><!--task in day here--></div>
-                <input type="radio" name="done" />
-              </div>
-              <div
-                class="day"
-                onclick="document.getElementById('detail-task').style.display='block'"
-              >
-                <a href=""><h1 class="step-date">11</h1></a>
-                <div class="task"><!--task in day here--></div>
-                <input type="radio" name="done" />
-              </div>
-              <div
-                class="day"
-                onclick="document.getElementById('detail-task').style.display='block'"
-              >
-                <a href=""><h1 class="step-date">12</h1></a>
-                <div class="task"><!--task in day here--></div>
-                <input type="radio" name="done" />
-              </div>
-              <div
-                class="day"
-                onclick="document.getElementById('detail-task').style.display='block'"
-              >
-                <a href=""><h1 class="step-date">13</h1></a>
-                <div class="task"><!--task in day here--></div>
-                <input type="radio" name="done" />
-              </div>
-              <div
-                class="day"
-                onclick="document.getElementById('detail-task').style.display='block'"
-              >
-                <a href=""><h1 class="step-date">14</h1></a>
-                <div class="task"><!--task in day here--></div>
-                <input type="radio" name="done" />
-              </div>
-              <div
-                class="day"
-                onclick="document.getElementById('detail-task').style.display='block'"
-              >
-                <a href=""><h1 class="step-date">15</h1></a>
-                <div class="task"><!--task in day here--></div>
-                <input type="radio" name="done" />
-              </div>
-              <div
-                class="day"
-                onclick="document.getElementById('detail-task').style.display='block'"
-              >
-                <a href=""><h1 class="step-date">16</h1></a>
-                <div class="task"><!--task in day here--></div>
-                <input type="radio" name="done" />
-              </div>
-              <div
-                class="day"
-                onclick="document.getElementById('detail-task').style.display='block'"
-              >
-                <a href=""><h1 class="step-date">19</h1></a>
-                <div class="task"><!--task in day here--></div>
-                <input type="radio" name="done" />
-              </div>
-              <div
-                class="day"
-                onclick="document.getElementById('detail-task').style.display='block'"
-              >
-                <a href=""><h1 class="step-date">20</h1></a>
-                <div class="task"><!--task in day here--></div>
-                <input type="radio" name="done" />
-              </div>
-              <div
-                class="day"
-                onclick="document.getElementById('detail-task').style.display='block'"
-              >
-                <a href=""><h1 class="step-date">21</h1></a>
-                <div class="task"><!--task in day here--></div>
-                <input type="radio" name="done" />
-              </div>
-              <div
-                class="day"
-                onclick="document.getElementById('detail-task').style.display='block'"
-              >
-                <a href=""><h1 class="step-date">22</h1></a>
-                <div class="task"><!--task in day here--></div>
-                <input type="radio" name="done" />
-              </div>
-              <div
-                class="day"
-                onclick="document.getElementById('detail-task').style.display='block'"
-              >
-                <a href=""><h1 class="step-date">23</h1></a>
-                <div class="task"><!--task in day here--></div>
-                <input type="radio" name="done" />
-              </div>
-              <div
-                class="day"
-                onclick="document.getElementById('detail-task').style.display='block'"
-              >
-                <a href=""><h1 class="step-date">26</h1></a>
-                <div class="task"><!--task in day here--></div>
-                <input type="radio" name="done" />
-              </div>
-              <div
-                class="day"
-                onclick="document.getElementById('detail-task').style.display='block'"
-              >
-                <a href=""><h1 class="step-date">27</h1></a>
-                <div class="task"><!--task in day here--></div>
-                <input type="radio" name="done" />
-              </div>
-              <div
-                class="day"
-                onclick="document.getElementById('detail-task').style.display='block'"
-              >
-                <a href=""><h1 class="step-date">28</h1></a>
-                <div class="task"><!--task in day here--></div>
-                <input type="radio" name="done" />
-              </div>
-              <div
-                class="day"
-                onclick="document.getElementById('detail-task').style.display='block'"
-              >
-                <a href=""><h1 class="step-date">29</h1></a>
-                <div class="task"><!--task in day here--></div>
-                <input type="radio" name="done" />
-              </div>
-              <div
-                class="day"
-                onclick="document.getElementById('detail-task').style.display='block'"
-              >
-                <a href=""><h1 class="step-date">1</h1></a>
-                <div class="task"><!--task in day here--></div>
-                <input type="radio" name="done" />
-              </div>
-            </div>
+            <ul id="litsDay" class="days">
+              <!--JavaScript here-->
+            </ul>
           </div>
         </div>
       </div>
+      <!--Detail task with each day-->
       <div id="detail-task">
         <div class="header-add-task">
-          <a href="" class="btn category-task">Category</a>
-          <input type="date" class="date-task" />
+          <a id="category-task" class="category-task">Category</a>
+          <div class="process-task">
+            <a id="complete">Completed</a>
+            <a id="todo">To do</a>
+            <a id="hold">Hold</a>
+          </div>
+          <input type="date" id="date-task" />
         </div>
-        <h2 class="title-task">Title task here</h2>
-        <span>Description here...</span><br />
-        <a
-          href=""
-          class="btn add-new-task"
-          onclick="document.getElementById('detail-task').style.display='none'"
-          >Add task</a
-        >
+        <img src="checkbox.png" width="30" height="30">
+        <input type="text" id="title-task" placeholder="Title of the task" maxlength="50">
+        <div class="description-task">
+          <input id="description" type="text" placeholder="Description here..." maxlength="50"><br/>
+        </div>
+        <a id="delete" class="add-new-task" onclick="updateTask()">Delete</a>
+        <a id="crud-task" class="add-new-task" onclick="updateTask()">Add task</a>
       </div>
     </div>
-    <script>
-      document.getElementsByClassName("detail-task").style.display = "block";
-    </script>
   </body>
 </html>
