@@ -199,6 +199,7 @@ function updateTask() {
   saveToLocalStorage();
 }
 
+// Dragdrop task when change date in detail task
 function DragdropTaskToAnotherDay(dateIndex, liElement) {
   liElement.querySelector("#category").innerHTML = "";
   liElement.querySelector("#task").innerHTML = "";
@@ -274,6 +275,7 @@ document.getElementById("hold").addEventListener("click", function (event) {
 // total task
 // total task completed
 
+// Update total task and color similar task
 const checkboxes = document.querySelectorAll(".tick-task");
 checkboxes.forEach((checkbox) => {
   checkbox.addEventListener("click", function () {
@@ -291,13 +293,12 @@ checkboxes.forEach((checkbox) => {
   });
 });
 // percent task
-document.querySelector("#percent-progress").style.width = `${
-  (totalCompleted / totalTask) * 100
-}%`;
 function UpdateTotalTask() {
   document.getElementById("total-completed-task").innerText = totalTask;
   document.getElementById("number-completed-task").innerText = totalCompleted;
   document.getElementById("number-to-do-task").innerText = totalTodo;
+  document.querySelector("#percent-progress").style.width = `${(totalCompleted / totalTask) * 100}%`;
+  document.querySelector("#per-task").innerText = `${totalCompleted} / ${totalTask}`;
 }
 
 const categoryOfTask = document.querySelectorAll("#category");
