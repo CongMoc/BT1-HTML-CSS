@@ -148,13 +148,25 @@
           </div>
           <input type="date" id="date-task" />
         </div>
-        <img src="checkbox.png" width="30" height="30">
-        <input type="text" id="title-task" placeholder="Title of the task" maxlength="50">
+        <img src="checkbox.png" width="25" height="25" />
+        <input
+          type="text"
+          id="title-task"
+          placeholder="Title of the task"
+          maxlength="50"
+        />
         <div class="description-task">
-          <input id="description" type="text" placeholder="Description here..." maxlength="50"><br/>
+          <input
+            id="description"
+            type="text"
+            placeholder="Description here..."
+            maxlength="50"
+          /><br />
         </div>
         <a id="delete" class="add-new-task" onclick="updateTask()">Delete</a>
-        <a id="crud-task" class="add-new-task" onclick="updateTask()">Add task</a>
+        <a id="crud-task" class="add-new-task" onclick="updateTask()"
+          >Add task</a
+        >
       </div>
     </div>
   </body>

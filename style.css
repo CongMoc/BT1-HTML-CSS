@@ -362,7 +362,7 @@ h5 {
   margin-left: 5%;
   border: 1px solid #b1b1b1;
   background-color: white;
-  overflow:hidden;
+  overflow: hidden;
   border-radius: 10px;
 }
 .calendar .weeks {
@@ -396,6 +396,7 @@ h5 {
   font-size: 15px;
   border: 1px solid #ccc;
   display: block;
+  cursor: grab;
 }
 .calendar .days .format-task {
   height: 60%;
@@ -411,6 +412,9 @@ h5 {
   padding-left: 5px;
 }
 
+.day.dragging :where(#category, #task, #description) {
+  opacity: 0;
+}
 
 .calendar .days .day input {
   position: absolute;
@@ -423,7 +427,7 @@ h5 {
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
   z-index: 1;
   color: black;
-  position:sticky;
+  position: sticky;
 }
 .calendar .days li.active:hover {
   background-color: #9a60f4;
@@ -443,7 +447,8 @@ h5 {
   background-color: #9a60f4;
 }
 
-#category, #task {
+#category,
+#task {
   font-size: 10px;
   margin-left: 5px;
 }
@@ -480,7 +485,7 @@ h5 {
 }
 #detail-task img {
   float: left;
-  margin: 5px 0px 5px 5px;
+  margin: 7px 0px 5px 10px;
 }
 
 #detail-task #date-task {
@@ -548,7 +553,7 @@ h5 {
 /* media with screen 27 inches*/
 @media only screen and (min-width: 1500px) {
   .information-user {
-    height: 30%;
+    height: 35%;
   }
   .list-project {
     height: 40%;

@@ -58,14 +58,6 @@ const renderCalendar = () => {
       liTag += `
             <li class="inactive day">
             <div class="dayINMonth">${lastDateofLastMonth - i}</div>
-            <p id="category"></p>
-            <ul class="format-task">
-              <p id="task"></p>
-              <li id="description"></li>
-            </ul>
-            <label>
-                <input class="tick-task" type="checkbox" name="done" value="Task" />
-            </label>
             </li>`;
     }
   }
@@ -81,9 +73,9 @@ const renderCalendar = () => {
     const dayOfWeek = currentDay.getDay();
     if (dayOfWeek !== 6 && dayOfWeek !== 0) {
       liTag += `
-            <li id="${i}" class="${isToday} day" onclick = "showDetailTask(${i},this)">
+            <li id="${i}" class="${isToday} day" draggable="true" onclick = "showDetailTask(${i},this)">
               <div class="dayINMonth">${i}</div>
-              <p id="category" contenteditable="true"></p>
+              <p id="category"></p>
                 <ul class="format-task">
                 <p id="task"></p>
                   <li id="description"></li>
@@ -102,14 +94,6 @@ const renderCalendar = () => {
       liTag += `
             <li class="inactive day">
             <div class="dayINMonth">${i}</div>
-            <p id="category"></p>
-            <ul class="format-task">
-              <p id="task"></p>
-              <li id="description"></li>
-            </ul>
-            <label>
-                <input class="tick-task" type="checkbox" name="done" value="Task" />
-            </label>
             </li>`;
     }
   }
@@ -190,9 +174,11 @@ function updateTask() {
       if (category_task) {
         liElement.querySelector("#category").innerHTML =
           category_task.innerHTML;
-        if (category_task.innerHTML == "Completed"){
+        if (category_task.innerHTML == "Completed") {
           liElement.querySelector(".tick-task").checked = true;
           totalCompleted++;
+        } else if (category_task.innerHTML == "To do") {
+          totalTodo++;
         }
       }
       liElement.querySelector("#task").innerHTML = title.value;
@@ -200,6 +186,7 @@ function updateTask() {
       colorTask(liElement);
       document.getElementById("detail-task").style.display = "none";
       liElement = null;
+      totalTask++;
     } else {
       //else -> drag drop task to another day
       DragdropTaskToAnotherDay(dayofinput, liElement);
@@ -209,6 +196,7 @@ function updateTask() {
     AddnewTask(dayofinput);
   }
   UpdateTotalTask();
+  saveToLocalStorage();
 }
 
 function DragdropTaskToAnotherDay(dateIndex, liElement) {
@@ -231,9 +219,11 @@ function AddnewTask(dateIndex) {
     if (category_task) {
       dateElement.querySelector("#category").innerHTML =
         category_task.innerHTML;
-      if (category_task.innerHTML == "Completed"){
+      if (category_task.innerHTML == "Completed") {
         dateElement.querySelector(".tick-task").checked = true;
         totalCompleted++;
+      } else if (category_task.innerHTML == "To do") {
+        totalTodo++;
       }
     }
     colorTask(dateElement);
@@ -301,11 +291,9 @@ checkboxes.forEach((checkbox) => {
   });
 });
 // percent task
-document.getElementById("percent-progress").style.width = `${
+document.querySelector("#percent-progress").style.width = `${
   (totalCompleted / totalTask) * 100
 }%`;
-// total task to do
-
 function UpdateTotalTask() {
   document.getElementById("total-completed-task").innerText = totalTask;
   document.getElementById("number-completed-task").innerText = totalCompleted;
@@ -315,34 +303,124 @@ function UpdateTotalTask() {
 const categoryOfTask = document.querySelectorAll("#category");
 categoryOfTask.forEach((category) => {
   category.addEventListener("input", (event) => {
-    if (event.target.value== "Completed"){
+    if (event.target.value == "Completed") {
       totalCompleted++;
-    }
-    else if (event.target.value == "To do") {
+    } else if (event.target.value == "To do") {
       totalTodo++;
     }
   });
   UpdateTotalTask();
 });
 
-// const targetElement = document.getElementById('myParagraph');
+const sortableList = document.querySelectorAll("#litsDay");
+const items = document.querySelectorAll(".day");
 
-// // Tạo một đối tượng MutationObserver với callback function
-// const observer = new MutationObserver((mutations) => {
-//   mutations.forEach((mutation) => {
-//     // Xử lý sự kiện khi văn bản thay đổi
-//     const totalText = mutation.target.innerText;
-//     console.log('Văn bản đã thay đổi:', totalText);
+items.forEach((item) => {
+  item.addEventListener("dragstart", () => {
+    item.classList.add("dragging");
+  });
+  item.addEventListener("dragend", () => {
+    item.classList.remove("dragging");
 
-//     // Tính tổng của văn bản và xử lý
-//     const totalLength = totalText.length;
-//     console.log('Tổng độ dài của văn bản:', totalLength);
-//   });
-// });
+    // Set the text content of the dragged item to an empty string
+    item.querySelector("#category").innerText = "";
+    item.querySelector("#task").innerText = "";
+    item.querySelector("#description").innerText = "";
+    item.querySelector(".tick-task").checked = false;
+    item.style.backgroundColor = "white";
+  });
+});
 
-// // Cài đặt các tùy chọn cho MutationObserver
-// const config = { childList: true, subtree: true, characterData: true };
+let category,
+  task,
+  description_task,
+  checked = false;
+sortableList.forEach((list) => {
+  list.addEventListener("dragover", function (event) {
+    event.preventDefault();
+    const draggingItem = list.querySelector(".dragging");
 
-// // Bắt đầu theo dõi sự thay đổi trên phần tử
-// observer.observe(targetElement, config);
+    // Getting all items except currently dragging and making an array of them
+    category = draggingItem.querySelector("#category").innerText;
+    task = draggingItem.querySelector("#task").innerText;
+    description_task = draggingItem.querySelector("#description").innerText;
+    checked = draggingItem.querySelector(".tick-task").check;
+  });
+  saveToLocalStorage();
+});
+sortableList.forEach((list) => {
+  list.addEventListener("drop", function (event) {
+    // Assuming the target element has class 'day'
+    const targetTask = event.target.closest(".day");
+    if (targetTask) {
+      // Set the text content of the target elements
+      targetTask.querySelector("#category").innerText = category;
+      targetTask.querySelector("#task").innerText = task;
+      targetTask.querySelector("#description").innerText = description_task;
+      targetTask.querySelector("#description").check = checked;
+      colorTask(targetTask);
+    } else {
+      totalTask--;
+      if (checked == True) {
+        totalCompleted--;
+      }
+    }
+  });
+  UpdateTotalTask();
+  saveToLocalStorage();
+});
 
+function saveToLocalStorage() {
+  const items = document.querySelectorAll(".day");
+  const tasks = [];
+
+  items.forEach((item) => {
+    const categoryElement = item.querySelector("#category");
+    const taskElement = item.querySelector("#task");
+    const descriptionElement = item.querySelector("#description");
+
+    if (
+      categoryElement !== null &&
+      taskElement !== null &&
+      descriptionElement !== null
+    ) {
+      const category = categoryElement.innerText;
+      const task = taskElement.innerText;
+      const description = descriptionElement.innerText;
+
+      tasks.push({ category, task, description });
+    }
+  });
+
+  localStorage.setItem("tasks", JSON.stringify(tasks));
+}
+
+// Khôi phục trạng thái từ Local Storage khi trang được load
+function restoreFromLocalStorage() {
+  const tasks = JSON.parse(localStorage.getItem("tasks"));
+
+  if (tasks) {
+    const items = document.querySelectorAll(".day");
+
+    items.forEach((item, index) => {
+      // Kiểm tra xem item có tồn tại không
+      if (item) {
+        const categoryElement = item.querySelector("#category");
+        const taskElement = item.querySelector("#task");
+        const descriptionElement = item.querySelector("#description");
+
+        // Kiểm tra xem các phần tử con có tồn tại không
+        if (category && task && description) {
+          categoryElement.innerText = tasks[index].category;
+          taskElement.innerText = tasks[index].task;
+          descriptionElement.innerText = tasks[index].description;
+        }
+      }
+    });
+  }
+}
+
+// Sự kiện khi reload trang
+window.addEventListener("load", () => {
+  restoreFromLocalStorage();
+});
