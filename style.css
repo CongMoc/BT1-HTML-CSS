@@ -110,7 +110,6 @@ body {
 .list-project {
   width: 100%;
   height: 35%;
-  font-size: 10px;
   border-bottom: 1px solid #b1b1b1;
   display: block;
   overflow: hidden;
@@ -124,7 +123,7 @@ body {
 
 .text h2 {
   margin-left: 10%;
-  font-size: 15px;
+  font-size: 20px;
 }
 
 .list-project ul {
@@ -145,7 +144,8 @@ body {
 }
 
 .list-project h2 {
-  margin-left: 10%;
+  margin-left: 15%;
+  font-size: 20px;
 }
 
 .team {
